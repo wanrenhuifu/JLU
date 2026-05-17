@@ -1,0 +1,27 @@
+@startuml UC13_VOPC
+title UC13: 管理课程计划 - 参与类图 (VOPC)
+
+class CoursePlanForm <<boundary>> {
+    + getUpdatedPlan()
+}
+
+class CourseController <<control>> {
+    + updatePlan(id, data)
+}
+
+class Course <<entity>> {
+    - credits: float
+    - teacherId: String
+    + updatePlan(data)
+}
+
+class Schedule <<entity>> {
+    - timeSlot: String
+    - classroom: String
+    + checkGlobalConflict(data): boolean
+}
+
+CoursePlanForm ..> CourseController : uses
+CourseController ..> Course : updates
+CourseController ..> Schedule : checks
+@enduml

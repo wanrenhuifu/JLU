@@ -1,0 +1,29 @@
+@startuml UC19_VOPC
+title UC19: 配置系统设置 - 参与类图 (VOPC)
+
+class ConfigPortal <<boundary>> {
+    + getSettings()
+    + getAnnouncement()
+}
+
+class SystemAdminController <<control>> {
+    + configure(data)
+}
+
+class SystemConfig <<entity>> {
+    - enrollmentPeriod: Range
+    - gradeEntryPeriod: Range
+    - themeColor: String
+    + save()
+}
+
+class Announcement <<entity>> {
+    - title: String
+    - content: String
+    + post()
+}
+
+ConfigPortal ..> SystemAdminController : uses
+SystemAdminController ..> SystemConfig : updates
+SystemAdminController ..> Announcement : creates
+@enduml

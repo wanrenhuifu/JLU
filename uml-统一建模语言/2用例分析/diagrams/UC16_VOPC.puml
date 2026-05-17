@@ -1,0 +1,27 @@
+@startuml UC16_VOPC
+title UC16: 设置选课规则 - 参与类图 (VOPC)
+
+class RuleConfigForm <<boundary>> {
+    + getRuleSettings()
+}
+
+class EnrollmentController <<control>> {
+    + saveRules(cid, data)
+}
+
+class CourseRule <<entity>> {
+    - ruleId: String
+    - minGrade: float
+    - prereqCourses: List
+    - slotLimit: int
+    + save()
+}
+
+class Course <<entity>> {
+    + bindRule(rid)
+}
+
+RuleConfigForm ..> EnrollmentController : uses
+EnrollmentController ..> CourseRule : maintains
+EnrollmentController ..> Course : links
+@enduml

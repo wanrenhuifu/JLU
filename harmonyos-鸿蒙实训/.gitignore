@@ -1,0 +1,39 @@
+# 鸿蒙项目Git忽略配置
+
+# ====================
+# 构建产物和缓存
+# ====================
+.hvigor/cache/
+.hvigor/outputs/
+.hvigor/logs/
+entry/build/
+entry/.preview/
+entry/.preview/default/cache/
+entry/.preview/default/generated/
+entry/.preview/default/intermediates/
+
+# ====================
+# 依赖缓存
+# ====================
+oh_modules/.ohpm/
+
+# ====================
+# IDE配置文件（可选）
+# ====================
+.idea/
+.previewer/
+
+# ====================
+# 编译中间产物
+# ====================
+*.abc
+*.hea
+*.dat
+*.jar
+
+# ====================
+# 系统文件
+# ====================
+.DS_Store
+Thumbs.db
+*.log

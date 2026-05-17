@@ -1,0 +1,23 @@
+@startuml UC21_VOPC
+title UC21: 全局成绩统计分析 - 参与类图 (VOPC)
+
+class GlobalStatsDashboard <<boundary>> {
+    + renderComparisons()
+}
+
+class GradeController <<control>> {
+    + getGlobalStats(filters)
+}
+
+class Grade <<entity>> {
+    + aggregateByDept()
+}
+
+class Department <<entity>> {
+    - deptName: String
+}
+
+GlobalStatsDashboard ..> GradeController : uses
+GradeController ..> Grade : aggregates
+Grade ..> Department : groups
+@enduml

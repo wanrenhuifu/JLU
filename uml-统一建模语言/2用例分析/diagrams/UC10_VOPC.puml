@@ -1,0 +1,21 @@
+@startuml UC10_VOPC
+title UC10: 修改成绩 - 参与类图 (VOPC)
+
+class GradeEditForm <<boundary>> {
+    + showGrade(data)
+    + showSuccess()
+}
+
+class GradeController <<control>> {
+    + updateGrade(sid, data)
+}
+
+class Grade <<entity>> {
+    - isAudited: boolean
+    + update(data)
+    + checkAuditStatus(): boolean
+}
+
+GradeEditForm ..> GradeController : uses
+GradeController ..> Grade : updates
+@enduml

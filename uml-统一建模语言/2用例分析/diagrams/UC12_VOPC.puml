@@ -1,0 +1,21 @@
+@startuml UC12_VOPC
+title UC12: 发布课程信息 - 参与类图 (VOPC)
+
+class CourseDetailForm <<boundary>> {
+    + getInputData()
+}
+
+class CourseController <<control>> {
+    + publishCourseInfo(id, data)
+}
+
+class Course <<entity>> {
+    - syllabus: String
+    - textbooks: String
+    - plan: String
+    + updateDetails(data)
+}
+
+CourseDetailForm ..> CourseController : uses
+CourseController ..> Course : updates
+@enduml

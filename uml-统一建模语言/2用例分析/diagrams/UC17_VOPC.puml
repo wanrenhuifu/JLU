@@ -1,0 +1,26 @@
+@startuml UC17_VOPC
+title UC17: 管理学生信息 - 参与类图 (VOPC)
+
+class StudentAdminPage <<boundary>> {
+    + getOperation()
+    + getStudentData()
+}
+
+class AccountManager <<control>> {
+    + manageStudent(action, data)
+    + batchImport(file)
+}
+
+class Student <<entity>> {
+    - studentId: String
+    - name: String
+    - major: String
+    - class: String
+    + create()
+    + update()
+    + delete()
+}
+
+StudentAdminPage ..> AccountManager : uses
+AccountManager ..> Student : maintains
+@enduml

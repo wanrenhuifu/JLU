@@ -1,0 +1,25 @@
+@startuml UC15_Sequence
+title UC15: 审批延期退课申请 - 顺序图
+
+actor "教务处" as AA
+boundary "审批中心页面" as ApprPage
+control "审批控制器" as ApprCtrl
+entity "DropRequest" as DropReq
+entity "EnrollmentRecord" as Record
+entity "Course" as Course
+
+AA -> ApprPage : 浏览待处理申请并点击审批
+ApprPage -> ApprCtrl : processApproval(requestId, action)
+
+alt 批准
+    ApprCtrl -> DropReq : updateStatus("APPROVED")
+    ApprCtrl -> Record : deleteRecord(studentId, courseId)
+    ApprCtrl -> Course : incrementSlotAndHandleWaitlist()
+    ApprCtrl --> ApprPage : 审批通过
+else 驳回
+    ApprCtrl -> DropReq : updateStatus("REJECTED")
+    ApprCtrl --> ApprPage : 审批驳回
+end
+
+ApprPage -> AA : 展示审批结果
+@enduml

@@ -1,0 +1,20 @@
+@startuml UC14_Sequence
+title UC14: 处理特殊选课请求 - 顺序图
+
+actor "教务处" as AA
+boundary "管理员选课处理界面" as AdminForm
+control "选课控制类" as EnrollCtrl
+entity "EnrollmentRecord" as Record
+entity "Course" as Course
+
+AA -> AdminForm : 输入学号及课程代码，强制加入
+AdminForm -> EnrollCtrl : forceEnroll(studentId, courseId)
+EnrollCtrl -> Course : checkCourseExists()
+Course --> EnrollCtrl : exists
+
+EnrollCtrl -> Record : createRecord(studentId, courseId)
+Record --> EnrollCtrl : success
+EnrollCtrl -> Course : decrementSlot()
+EnrollCtrl --> AdminForm : 操作成功提示
+AdminForm -> AA : 显示成功
+@enduml

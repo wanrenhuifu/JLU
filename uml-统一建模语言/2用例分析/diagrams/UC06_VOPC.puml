@@ -1,0 +1,32 @@
+@startuml UC06_VOPC
+title UC06: 退课 - 参与类图 (VOPC)
+
+class MyCoursesPage <<boundary>> {
+    + displaySuccess()
+    + redirectToApproval()
+}
+
+class EnrollmentController <<control>> {
+    + drop(studentId, courseId)
+    + processWaitlist(courseId)
+}
+
+class EnrollmentRecord <<entity>> {
+    + delete(studentId, courseId)
+    + create(studentId, courseId)
+}
+
+class Course <<entity>> {
+    + updateEnrolledCount(delta)
+}
+
+class Waitlist <<entity>> {
+    + getNext(courseId): studentId
+    + remove(studentId, courseId)
+}
+
+MyCoursesPage ..> EnrollmentController : uses
+EnrollmentController ..> EnrollmentRecord : deletes/creates
+EnrollmentController ..> Course : updates
+EnrollmentController ..> Waitlist : updates
+@enduml

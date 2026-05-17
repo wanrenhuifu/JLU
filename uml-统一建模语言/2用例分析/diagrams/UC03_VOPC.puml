@@ -1,0 +1,30 @@
+@startuml UC03_VOPC
+title UC03: 更新个人信息 - 参与类图 (VOPC)
+
+class ProfileForm <<boundary>> {
+    + displaySuccess()
+    + validateInput()
+}
+
+class ProfileController <<control>> {
+    + updateProfile(info)
+}
+
+class Student <<entity>> {
+    - phone: String
+    - email: String
+    - address: String
+    + updateInfo(info)
+}
+
+class Teacher <<entity>> {
+    - phone: String
+    - email: String
+    - researchArea: String
+    + updateInfo(info)
+}
+
+ProfileForm ..> ProfileController : uses
+ProfileController ..> Student : updates
+ProfileController ..> Teacher : updates
+@enduml

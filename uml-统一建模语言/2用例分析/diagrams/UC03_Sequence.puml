@@ -1,0 +1,15 @@
+@startuml UC03_Sequence
+title UC03: 更新个人信息 - 顺序图
+
+actor "用户" as UserActor
+boundary "个人中心界面" as ProfileForm
+control "资料管理控制器" as ProfileController
+entity "Student/Teacher" as UserEntity
+
+UserActor -> ProfileForm : 更新联系信息
+ProfileForm -> ProfileController : 保存请求(info)
+ProfileController -> UserEntity : updateInfo(info)
+UserEntity --> ProfileController : success
+ProfileController --> ProfileForm : 更新成功
+ProfileForm -> UserActor : 提示成功
+@enduml

@@ -1,0 +1,17 @@
+@startuml UC23_Sequence
+title UC23: 同步课程信息 - 顺序图
+
+actor "外部系统" as ExternalSystem
+boundary "外部API连接器" as Connector
+control "集成控制器" as IntegCtrl
+entity "SyncRequest" as SyncReq
+entity "Course" as Course
+
+ExternalSystem -> Connector : 发送变更通知/数据包
+Connector -> IntegCtrl : handleIncomingData(payload)
+IntegCtrl -> SyncReq : recordRequest(payload)
+IntegCtrl -> Course : findByExternalId(id)
+IntegCtrl -> Course : updateOrInsert(data)
+IntegCtrl --> Connector : HTTP 200 OK
+Connector -> ExternalSystem : 同步完成
+@enduml

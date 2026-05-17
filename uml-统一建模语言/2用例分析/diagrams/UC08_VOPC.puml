@@ -1,0 +1,22 @@
+@startuml UC08_VOPC
+title UC08: 加入候补名单 - 参与类图 (VOPC)
+
+class WaitlistConfirmDialog <<boundary>> {
+    + showPosition(pos)
+}
+
+class EnrollmentController <<control>> {
+    + addToWaitlist(studentId, courseId)
+}
+
+class Waitlist <<entity>> {
+    - studentId: String
+    - courseId: String
+    - position: int
+    - requestTime: DateTime
+    + addEntry(sid, cid): pos
+}
+
+WaitlistConfirmDialog ..> EnrollmentController : uses
+EnrollmentController ..> Waitlist : creates
+@enduml

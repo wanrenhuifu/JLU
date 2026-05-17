@@ -1,0 +1,35 @@
+@startuml UC05_VOPC
+title UC05: 选课 - 参与类图 (VOPC)
+
+class CourseSelectionForm <<boundary>> {
+    + showSuccess()
+    + showFailure(reason)
+}
+
+class EnrollmentController <<control>> {
+    + enroll(studentId, courseId)
+}
+
+class Course <<entity>> {
+    - courseId: String
+    - capacity: int
+    - enrolledCount: int
+    + hasSlot(): boolean
+}
+
+class Student <<entity>> {
+    - studentId: String
+    + hasTaken(prereqId): boolean
+}
+
+class EnrollmentRecord <<entity>> {
+    - studentId: String
+    - courseId: String
+    - timestamp: DateTime
+}
+
+CourseSelectionForm ..> EnrollmentController : uses
+EnrollmentController ..> Course : validates/updates
+EnrollmentController ..> Student : validates
+EnrollmentController ..> EnrollmentRecord : creates
+@enduml

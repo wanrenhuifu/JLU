@@ -1,0 +1,23 @@
+@startuml UC09_VOPC
+title UC09: 录入成绩 - 参与类图 (VOPC)
+
+class GradeEntryForm <<boundary>> {
+    + getStudentScores()
+    + showCalculation(data)
+}
+
+class GradeController <<control>> {
+    + saveGrades(list)
+    - calculateOverall(scores)
+}
+
+class Grade <<entity>> {
+    - regularScore: float
+    - examScore: float
+    - overallScore: float
+    + createOrUpdate(sid, cid, data)
+}
+
+GradeEntryForm ..> GradeController : uses
+GradeController ..> Grade : maintains
+@enduml

@@ -1,0 +1,24 @@
+@startuml UC18_VOPC
+title UC18: 管理教师信息 - 参与类图 (VOPC)
+
+class TeacherAdminPage <<boundary>> {
+    + getOperation()
+    + getTeacherData()
+}
+
+class AccountManager <<control>> {
+    + manageTeacher(action, data)
+}
+
+class Teacher <<entity>> {
+    - teacherId: String
+    - name: String
+    - department: String
+    - title: String
+    + create()
+    + update()
+}
+
+TeacherAdminPage ..> AccountManager : uses
+AccountManager ..> Teacher : maintains
+@enduml

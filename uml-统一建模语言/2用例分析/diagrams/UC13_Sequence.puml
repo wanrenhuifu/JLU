@@ -1,0 +1,19 @@
+@startuml UC13_Sequence
+title UC13: 管理课程计划 - 顺序图
+
+actor "教务处" as AA
+boundary "课程计划管理界面" as PlanForm
+control "课程控制器" as CourseCtrl
+entity "Course" as Course
+entity "Schedule" as Schedule
+
+AA -> PlanForm : 调整学分、教师、时间等面板
+PlanForm -> CourseCtrl : updatePlan(courseId, planData)
+CourseCtrl -> Schedule : checkGlobalConflict(planData)
+Schedule --> CourseCtrl : noConflict
+
+CourseCtrl -> Course : updatePlan(planData)
+Course --> CourseCtrl : success
+CourseCtrl --> PlanForm : 更新成功提示
+PlanForm -> AA : 显示结果
+@enduml

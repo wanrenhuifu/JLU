@@ -1,0 +1,21 @@
+@startuml UC02_VOPC
+title UC02: 修改密码 - 参与类图 (VOPC)
+
+class PasswordChangeForm <<boundary>> {
+    + displaySuccess()
+    + displayError()
+}
+
+class PasswordController <<control>> {
+    + changePassword(oldPwd, newPwd)
+}
+
+class User <<entity>> {
+    - password: String
+    + validatePassword(pwd): boolean
+    + updatePassword(newPwd)
+}
+
+PasswordChangeForm ..> PasswordController : uses
+PasswordController ..> User : updates
+@enduml

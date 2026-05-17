@@ -1,0 +1,14 @@
+@startuml UC18_Sequence
+title UC18: 管理教师信息 - 顺序图
+
+actor "管理员" as Admin
+boundary "教师管理页面" as AdminPage
+control "账户管理器" as AccMgr
+entity "Teacher" as Teacher
+
+Admin -> AdminPage : 执行增删改查或批量导入
+AdminPage -> AccMgr : teacherDataOperation(action, data)
+AccMgr -> Teacher : executeAction(action, data)
+Teacher --> AccMgr : success
+AccMgr --> AdminPage : 更新成功提示
+@enduml

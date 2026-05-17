@@ -1,0 +1,24 @@
+@startuml UC14_VOPC
+title UC14: 处理特殊选课请求 - 参与类图 (VOPC)
+
+class AdminEnrollForm <<boundary>> {
+    + getStudentId()
+    + getCourseId()
+}
+
+class EnrollmentController <<control>> {
+    + forceEnroll(sid, cid)
+}
+
+class EnrollmentRecord <<entity>> {
+    + create(sid, cid)
+}
+
+class Course <<entity>> {
+    + decrementSlot()
+}
+
+AdminEnrollForm ..> EnrollmentController : uses
+EnrollmentController ..> EnrollmentRecord : creates
+EnrollmentController ..> Course : updates
+@enduml
