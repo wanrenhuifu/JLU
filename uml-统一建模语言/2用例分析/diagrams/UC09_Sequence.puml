@@ -1,0 +1,17 @@
+@startuml UC09_Sequence
+title UC09: 录入成绩 - 顺序图
+
+actor "教师" as Teacher
+boundary "成绩录入界面" as EntryForm
+control "成绩控制类" as GradeCtrl
+entity "Grade" as Grade
+
+Teacher -> EntryForm : 选择课程并录入学生分数
+EntryForm -> GradeCtrl : saveGrades(studentScores)
+loop 为每个学生
+    GradeCtrl -> Grade : createOrUpdate(sid, cid, scores)
+    Grade --> GradeCtrl : success
+end
+GradeCtrl --> EntryForm : 返回计算后的总评及保存成功提示
+EntryForm -> Teacher : 显示录入成功
+@enduml

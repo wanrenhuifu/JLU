@@ -1,0 +1,24 @@
+@startuml UC11_VOPC
+title UC11: 成绩统计分析 - 参与类图 (VOPC)
+
+class TeacherStatsPage <<boundary>> {
+    + displayStats(charts)
+}
+
+class GradeController <<control>> {
+    + getGradeStats(courseId)
+    - generateDistribution(list)
+}
+
+class Grade <<entity>> {
+    - scoreOverall: float
+}
+
+class Course <<entity>> {
+    - courseId: String
+}
+
+TeacherStatsPage ..> GradeController : uses
+GradeController ..> Grade : aggregates
+Grade ..> Course : relates
+@enduml

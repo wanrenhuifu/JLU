@@ -1,0 +1,22 @@
+@startuml UC01_VOPC
+title UC01: 用户登录 - 参与类图 (VOPC)
+
+class LoginForm <<boundary>> {
+    + displayErrorMessage()
+    + navigateToHome()
+}
+
+class LoginController <<control>> {
+    + login(username, password)
+}
+
+class User <<entity>> {
+    - username: String
+    - password: String
+    - role: Enum
+    + validatePassword(pwd): boolean
+}
+
+LoginForm ..> LoginController : uses
+LoginController ..> User : accesses
+@enduml

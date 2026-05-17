@@ -1,0 +1,28 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/RouterTest",
+    "pages/BorderTest",
+    "pages/BuilderTest",
+    "pages/ColumnTest",
+    "pages/CommonTest",
+    "pages/DataTest",
+    "pages/FlexTest",
+    "pages/ForEachTest",
+    "pages/GridTest",
+    "pages/IfElseTest",
+    "pages/ListTest",
+    "pages/MarginPadding",
+    "pages/Method",
+    "pages/PagesTest",
+    "pages/PerferencesTest",
+    "pages/RowTest",
+    "pages/SQTest",
+    "pages/ScrollTest",
+    "pages/StackTest",
+    "pages/SwiperTest",
+    "pages/TabsTest",
+    "pages/Test01",
+    "pages/TestPages"
+  ]
+}

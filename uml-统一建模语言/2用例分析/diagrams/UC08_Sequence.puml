@@ -1,0 +1,15 @@
+@startuml UC08_Sequence
+title UC08: 加入候补名单 - 顺序图
+
+actor "学生" as StudentActor
+boundary "候补确认对话框" as WaitForm
+control "选课控制类" as EnrollCtrl
+entity "Waitlist" as WList
+
+StudentActor -> WaitForm : 确认加入候补
+WaitForm -> EnrollCtrl : addToWaitlist(studentId, courseId)
+EnrollCtrl -> WList : addEntry(studentId, courseId)
+WList --> EnrollCtrl : position
+EnrollCtrl --> WaitForm : 成功及排队位置
+WaitForm -> StudentActor : 提示已在候补中
+@enduml

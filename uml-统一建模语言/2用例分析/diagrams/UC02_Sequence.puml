@@ -1,0 +1,23 @@
+@startuml UC02_Sequence
+title UC02: 修改密码 - 顺序图
+
+actor "用户" as UserActor
+boundary "修改密码界面" as PwdForm
+control "密码管理控制器" as PwdController
+entity "用户" as UserEntity
+
+UserActor -> PwdForm : 输入原密码及新密码
+PwdForm -> PwdController : 修改请求(oldPwd, newPwd)
+PwdController -> UserEntity : validatePassword(oldPwd)
+UserEntity --> PwdController : boolean
+
+alt 原密码正确
+    PwdController -> UserEntity : updatePassword(newPwd)
+    UserEntity --> PwdController : success
+    PwdController --> PwdForm : 成功提示
+    PwdForm -> UserActor : 显示成功
+else 原密码错误
+    PwdController --> PwdForm : 提示错误
+    PwdForm -> UserActor : 重新输入
+end
+@enduml

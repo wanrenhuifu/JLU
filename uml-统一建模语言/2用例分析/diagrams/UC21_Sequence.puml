@@ -1,0 +1,18 @@
+@startuml UC21_Sequence
+title UC21: 全局成绩统计分析 - 顺序图
+
+actor "管理员" as Admin
+boundary "全局分析面板" as Dashboard
+control "成绩控制类" as GradeCtrl
+entity "Grade" as Grade
+entity "Department" as Dept
+
+Admin -> Dashboard : 选择全局统计维度
+Dashboard -> GradeCtrl : getGlobalStats(filters)
+GradeCtrl -> Grade : findAndAggregate(filters)
+Grade --> GradeCtrl : aggregatedData
+GradeCtrl -> Dept : getDeptContext()
+Dept --> GradeCtrl : metadata
+GradeCtrl -> GradeCtrl : prepareGlobalReport()
+GradeCtrl --> Dashboard : 返回跨学院对比及均分分析
+@enduml

@@ -1,0 +1,76 @@
+@startuml Subsystem_Design
+title 教务管理系统 - 子系统划分及依赖关系
+
+package "用户管理子系统 (UserManagementSubsystem)" <<Folder>> {
+    class LoginForm <<boundary>>
+    class LoginController <<control>>
+    class User <<entity>>
+    class PasswordChangeForm <<boundary>>
+    class PasswordController <<control>>
+    class ProfileForm <<boundary>>
+    class ProfileController <<control>>
+    class Student <<entity>>
+    class Teacher <<entity>>
+}
+
+package "选课管理子系统 (CourseSelectionSubsystem)" <<Folder>> {
+    class CourseSearchPage <<boundary>>
+    class CourseSelectionForm <<boundary>>
+    class MyCoursesPage <<boundary>>
+    class WaitlistConfirmDialog <<boundary>>
+    class RuleConfigForm <<boundary>>
+    class EnrollmentController <<control>>
+    class CourseController <<control>>
+    class Course <<entity>>
+    class EnrollmentRecord <<entity>>
+    class Waitlist <<entity>>
+    class CourseRule <<entity>>
+}
+
+package "成绩管理子系统 (GradeManagementSubsystem)" <<Folder>> {
+    class GradeViewPage <<boundary>>
+    class GradeEntryForm <<boundary>>
+    class GradeEditForm <<boundary>>
+    class TeacherStatsPage <<boundary>>
+    class AuditPortal <<boundary>>
+    class GlobalStatsDashboard <<boundary>>
+    class GradeController <<control>>
+    class AuditController <<control>>
+    class Grade <<entity>>
+}
+
+package "行政管理子系统 (AdministrativeSubsystem)" <<Folder>> {
+    class StudentAdminPage <<boundary>>
+    class TeacherAdminPage <<boundary>>
+    class ConfigPortal <<boundary>>
+    class BackupTriggerPage <<boundary>>
+    class ApprovalCenterPage <<boundary>>
+    class AdminEnrollForm <<boundary>>
+    class AccountManager <<control>>
+    class SystemAdminController <<control>>
+    class MaintenanceController <<control>>
+    class ApprovalController <<control>>
+    class SystemConfig <<entity>>
+    class Announcement <<entity>>
+    class BackupLog <<entity>>
+    class DataArchive <<entity>>
+    class DropRequest <<entity>>
+}
+
+package "系统集成子系统 (IntegrationSubsystem)" <<Folder>> {
+    class ExternalAPIConnector <<boundary>>
+    class IntegrationController <<control>>
+    class SyncRequest <<entity>>
+    class ExternalDBInterface <<entity>>
+}
+
+' 依赖关系
+CourseSelectionSubsystem ..> UserManagementSubsystem : 验证身份/获取学籍
+GradeManagementSubsystem ..> CourseSelectionSubsystem : 获取选课记录
+GradeManagementSubsystem ..> UserManagementSubsystem : 验证权限
+AdministrativeSubsystem ..> UserManagementSubsystem : 管理账户
+AdministrativeSubsystem ..> CourseSelectionSubsystem : 强制选课/审批退课
+AdministrativeSubsystem ..> GradeManagementSubsystem : 审核成绩/统计
+IntegrationSubsystem ..> CourseSelectionSubsystem : 同步课程信息
+
+@enduml

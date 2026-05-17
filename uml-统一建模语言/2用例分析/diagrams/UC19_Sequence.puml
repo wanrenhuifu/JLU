@@ -1,0 +1,18 @@
+@startuml UC19_Sequence
+title UC19: 配置系统设置 - 顺序图
+
+actor "管理员" as Admin
+boundary "配置门户" as Portal
+control "系统管理控制器" as AdminCtrl
+entity "SystemConfig" as Config
+entity "Announcement" as Announcement
+
+Admin -> Portal : 设置时间、主题或发布公告
+Portal -> AdminCtrl : updateSettings(settings)
+AdminCtrl -> Config : saveParams(params)
+opt 发布公告
+    AdminCtrl -> Announcement : create(content)
+end
+Config --> AdminCtrl : success
+AdminCtrl --> Portal : 配置生效提示
+@enduml

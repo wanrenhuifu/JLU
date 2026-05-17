@@ -1,0 +1,18 @@
+@startuml UC10_Sequence
+title UC10: 修改成绩 - 顺序图
+
+actor "教师" as Teacher
+boundary "成绩修改界面" as EditForm
+control "成绩控制类" as GradeCtrl
+entity "Grade" as Grade
+
+Teacher -> EditForm : 修改特定学生的分数
+EditForm -> GradeCtrl : updateGrade(studentId, newScores)
+GradeCtrl -> Grade : checkAuditStatus()
+Grade --> GradeCtrl : notAuditYet
+
+GradeCtrl -> Grade : update(newScores)
+Grade --> GradeCtrl : updatedOverall
+GradeCtrl --> EditForm : 提示修改成功
+EditForm -> Teacher : 显示结果
+@enduml

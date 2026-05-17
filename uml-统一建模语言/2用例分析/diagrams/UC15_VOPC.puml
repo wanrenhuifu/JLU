@@ -1,0 +1,33 @@
+@startuml UC15_VOPC
+title UC15: 审批延期退课申请 - 参与类图 (VOPC)
+
+class ApprovalCenterPage <<boundary>> {
+    + showDetail(requestId)
+    + getAction()
+}
+
+class ApprovalController <<control>> {
+    + processApproval(rid, action)
+}
+
+class DropRequest <<entity>> {
+    - requestId: String
+    - studentId: String
+    - courseId: String
+    - status: Enum
+    + updateStatus(val)
+}
+
+class Course <<entity>> {
+    + handleDrop()
+}
+
+class EnrollmentRecord <<entity>> {
+    + delete(sid, cid)
+}
+
+ApprovalCenterPage ..> ApprovalController : uses
+ApprovalController ..> DropRequest : updates
+ApprovalController ..> Course : triggers logic
+ApprovalController ..> EnrollmentRecord : deletes
+@enduml

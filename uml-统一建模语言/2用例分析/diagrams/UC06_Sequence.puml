@@ -1,0 +1,32 @@
+@startuml UC06_Sequence
+title UC06: 退课 - 顺序图
+
+actor "学生" as StudentActor
+boundary "我的课程页面" as MyPage
+control "选课控制器" as EnrollCtrl
+entity "EnrollmentRecord" as Record
+entity "Waitlist" as WList
+entity "Course" as Course
+
+StudentActor -> MyPage : 点击退课(courseId)
+MyPage -> EnrollCtrl : dropRequest(studentId, courseId)
+
+alt 截止日期前
+    EnrollCtrl -> Record : deleteRecord(studentId, courseId)
+    Record --> EnrollCtrl : success
+    EnrollCtrl -> Course : incrementSlot()
+    
+    EnrollCtrl -> WList : popNextStudent(courseId)
+    WList --> EnrollCtrl : nextStudentId (if exists)
+    
+    opt 存在候补学生
+        EnrollCtrl -> Record : createRecord(nextStudentId, courseId)
+        EnrollCtrl -> Course : decrementSlot()
+    end
+    
+    EnrollCtrl --> MyPage : 退课及递补成功
+    MyPage -> StudentActor : 提示退课成功
+else 截止日期后
+    EnrollCtrl --> MyPage : 重定向至审批流程(UC15)
+end
+@enduml

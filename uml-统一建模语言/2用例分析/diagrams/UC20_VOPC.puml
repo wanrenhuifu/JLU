@@ -1,0 +1,19 @@
+@startuml UC20_VOPC
+title UC20: 审核成绩 - 参与类图 (VOPC)
+
+class AuditPortal <<boundary>> {
+    + getApprovalAction()
+}
+
+class AuditController <<control>> {
+    + audit(ids, status)
+}
+
+class Grade <<entity>> {
+    - auditStatus: Enum
+    + setAuditStatus(val)
+}
+
+AuditPortal ..> AuditController : uses
+AuditController ..> Grade : updates
+@enduml

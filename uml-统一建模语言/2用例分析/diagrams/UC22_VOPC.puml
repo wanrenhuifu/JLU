@@ -1,0 +1,25 @@
+@startuml UC22_VOPC
+title UC22: 备份系统数据 - 参与类图 (VOPC)
+
+class BackupTriggerPage <<boundary>> {
+    + showStatus()
+}
+
+class MaintenanceController <<control>> {
+    + initiateBackup()
+}
+
+class DataArchive <<entity>> {
+    + backup()
+}
+
+class BackupLog <<entity>> {
+    - timestamp: DateTime
+    - fileName: String
+    + log()
+}
+
+BackupTriggerPage ..> MaintenanceController : uses
+MaintenanceController ..> DataArchive : executes
+MaintenanceController ..> BackupLog : creates
+@enduml

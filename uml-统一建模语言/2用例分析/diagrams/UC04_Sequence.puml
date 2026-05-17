@@ -1,0 +1,18 @@
+@startuml UC04_Sequence
+title UC04: 浏览和搜索课程 - 顺序图
+
+actor "学生" as Student
+boundary "课程搜索页面" as SearchPage
+control "课程控制器" as CourseCtrl
+entity "外部数据库接口" as DBInterface
+entity "Course" as Course
+
+Student -> SearchPage : 输入筛选条件(名称, 教师等)
+SearchPage -> CourseCtrl : searchCourses(criteria)
+CourseCtrl -> DBInterface : syncIfNeeded()
+DBInterface --> CourseCtrl : latestData
+CourseCtrl -> Course : findMatches(criteria)
+Course --> CourseCtrl : results
+CourseCtrl --> SearchPage : 展示课程列表及其详情
+SearchPage -> Student : 显示结果
+@enduml

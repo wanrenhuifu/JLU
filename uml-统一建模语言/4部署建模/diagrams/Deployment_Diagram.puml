@@ -1,0 +1,42 @@
+@startuml Deployment_Diagram
+title 教务管理系统 - 物理部署图
+
+skinparam componentStyle uml2
+
+node "客户端 (用户终端)" {
+    component [Web 浏览器] <<Browser>>
+    component [移动端 App] <<Mobile App>>
+}
+
+package "校园内网" {
+    node "Web 代理及负载均衡 (Nginx)" as WebServer {
+        component [负载均衡模块]
+    }
+
+    node "应用服务器集群 (App Server)" as AppServer {
+        artifact "教务管理系统.war" as App
+    }
+
+    node "数据库服务器 (Database Server)" as DBServer {
+        database "MySQL / PostgreSQL" as DB
+    }
+
+    node "文件/备份服务器 (File Server)" as FileServer {
+        artifact "数据备份文件"
+    }
+}
+
+node "外部数据系统" as ExternalSystem {
+    component [外部 API]
+}
+
+' 连线及协议
+[Web 浏览器] -- WebServer : HTTPS (Port 443)
+[移动端 App] -- WebServer : HTTPS (Port 443)
+
+WebServer -- AppServer : HTTP/TCP (Port 8080)
+AppServer -- DBServer : JDBC / SQL
+AppServer -- FileServer : NFS / SMB (文件存取)
+AppServer -- ExternalSystem : HTTPS / RESTful (数据同步)
+
+@enduml

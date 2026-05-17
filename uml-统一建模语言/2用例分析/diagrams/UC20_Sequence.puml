@@ -1,0 +1,16 @@
+@startuml UC20_Sequence
+title UC20: 审核成绩 - 顺序图
+
+actor "管理员" as Admin
+boundary "审核门户" as Portal
+control "审核控制器" as AuditCtrl
+entity "Grade" as Grade
+
+Admin -> Portal : 查看待审成绩并提交意见
+Portal -> AuditCtrl : auditGrades(gradeIds, action)
+loop 每个成绩
+    AuditCtrl -> Grade : setAuditStatus(action)
+    Grade --> AuditCtrl : updated
+end
+AuditCtrl --> Portal : 审批完成提示
+@enduml

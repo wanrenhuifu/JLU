@@ -1,0 +1,14 @@
+@startuml UC12_Sequence
+title UC12: 发布课程信息 - 顺序图
+
+actor "教务处" as AA
+boundary "课程详情编辑界面" as EditForm
+control "课程控制器" as CourseCtrl
+entity "Course" as Course
+
+AA -> EditForm : 补充大纲、计划、教材等内容
+EditForm -> CourseCtrl : publishCourseInfo(courseId, details)
+CourseCtrl -> Course : updateDetails(details)
+Course --> CourseCtrl : success
+CourseCtrl --> AA : 提示发布成功
+@enduml

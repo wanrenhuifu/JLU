@@ -1,0 +1,15 @@
+@startuml UC17_Sequence
+title UC17: 管理学生信息 - 顺序图
+
+actor "管理员" as Admin
+boundary "学生管理页面" as AdminPage
+control "账户管理器" as AccMgr
+entity "Student" as Student
+
+Admin -> AdminPage : 执行增删改查或批量导入操作
+AdminPage -> AccMgr : studentDataOperation(action, data)
+AccMgr -> Student : executeAction(action, data)
+Student --> AccMgr : success
+AccMgr --> AdminPage : 状态更新提示
+AdminPage -> Admin : 展示结果
+@enduml

@@ -1,0 +1,30 @@
+@startuml UC04_VOPC
+title UC04: 浏览和搜索课程 - 参与类图 (VOPC)
+
+class CourseSearchPage <<boundary>> {
+    + renderResults(list)
+    + getFilterCriteria()
+}
+
+class CourseController <<control>> {
+    + searchCourses(criteria)
+    + getCourseDetails(id)
+}
+
+class Course <<entity>> {
+    - code: String
+    - name: String
+    - credits: float
+    - teacher: String
+    - description: String
+    + findByCriteria(criteria)
+}
+
+class ExternalDBInterface <<entity>> {
+    + syncData()
+}
+
+CourseSearchPage ..> CourseController : uses
+CourseController ..> Course : queries
+CourseController ..> ExternalDBInterface : interacts
+@enduml

@@ -1,0 +1,16 @@
+@startuml UC22_Sequence
+title UC22: 备份系统数据 - 顺序图
+
+actor "管理员" as Admin
+boundary "备份触发页面" as BackupPage
+control "维护控制器" as MaintCtrl
+entity "DataArchive" as Archive
+entity "BackupLog" as Log
+
+Admin -> BackupPage : 触发手动备份
+BackupPage -> MaintCtrl : initiateBackup()
+MaintCtrl -> Archive : performHotBackup()
+Archive --> MaintCtrl : backupFileRef
+MaintCtrl -> Log : createEntry(ref)
+MaintCtrl --> BackupPage : 备份成功及文件下载链接
+@enduml

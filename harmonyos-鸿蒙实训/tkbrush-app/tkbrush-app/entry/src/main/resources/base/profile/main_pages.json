@@ -1,0 +1,19 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/Onboarding/TKOnboarding",
+    "pages/Login/TKRegister",
+    "pages/Login/TKLogin",
+    "pages/Login/TKForgotPassword",
+    "pages/Community/TKPublishArticle",
+    "pages/Community/TKCommunityDetail",
+    "pages/Mine/TKSetting",
+    "pages/Mine/TKUpdateNickName",
+    "pages/Mine/TKAbout",
+    "pages/Mine/TKUpdatePassword",
+    "pages/Home/TKExamination",
+    "pages/Home/TKExaminationResult",
+    "pages/Home/TKWebPage",
+    "pages/Home/TKPaperListPage"
+  ]
+}

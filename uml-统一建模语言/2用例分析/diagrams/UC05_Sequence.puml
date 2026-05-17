@@ -1,0 +1,34 @@
+@startuml UC05_Sequence
+title UC05: 选课 - 顺序图
+
+actor "学生" as StudentActor
+boundary "选课界面" as SelectForm
+control "选课控制器" as EnrollCtrl
+entity "Course" as Course
+entity "EnrollmentRecord" as Record
+entity "Student" as StudentEntity
+
+StudentActor -> SelectForm : 点击选课(courseId)
+SelectForm -> EnrollCtrl : enrollRequest(studentId, courseId)
+EnrollCtrl -> Course : checkAvailability()
+Course --> EnrollCtrl : availableSlots
+
+alt 名额充足
+    EnrollCtrl -> StudentEntity : checkPrerequisites(courseId)
+    StudentEntity --> EnrollCtrl : passed
+    
+    alt 满足先修条件
+        EnrollCtrl -> Record : createRecord(studentId, courseId)
+        Record --> EnrollCtrl : success
+        EnrollCtrl -> Course : decrementSlot()
+        EnrollCtrl --> SelectForm : 选课成功
+        SelectForm -> StudentActor : 提示成功
+    else 条件不符
+        EnrollCtrl --> SelectForm : 提示先修课要求未满足
+        SelectForm -> StudentActor : 显示失败原因
+    end
+else 名额已满
+    EnrollCtrl --> SelectForm : 提示名额已满，建议候补
+    SelectForm -> StudentActor : 询问是否加入候补(UC08)
+end
+@enduml

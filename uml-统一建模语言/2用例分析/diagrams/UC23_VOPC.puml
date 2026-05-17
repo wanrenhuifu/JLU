@@ -1,0 +1,27 @@
+@startuml UC23_VOPC
+title UC23: 同步课程信息 - 参与类图 (VOPC)
+
+class ExternalAPIConnector <<boundary>> {
+    + receivePayload()
+    + sendAcknowledgement()
+}
+
+class IntegrationController <<control>> {
+    + processSync(data)
+}
+
+class SyncRequest <<entity>> {
+    - requestId: String
+    - rawData: String
+    + save()
+}
+
+class Course <<entity>> {
+    - externalId: String
+    + updateFromExternal(data)
+}
+
+ExternalAPIConnector ..> IntegrationController : uses
+IntegrationController ..> SyncRequest : logs
+IntegrationController ..> Course : updates
+@enduml

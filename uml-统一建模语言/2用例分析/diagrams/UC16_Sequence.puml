@@ -1,0 +1,16 @@
+@startuml UC16_Sequence
+title UC16: 设置选课规则 - 顺序图
+
+actor "教务处" as AA
+boundary "规则配置界面" as RuleForm
+control "选课控制类" as EnrollCtrl
+entity "CourseRule" as Rule
+entity "Course" as Course
+
+AA -> RuleForm : 配置名额、先修课等逻辑
+RuleForm -> EnrollCtrl : saveRules(courseId, rulesData)
+EnrollCtrl -> Rule : createOrUpdateRule(rulesData)
+Rule --> EnrollCtrl : success
+EnrollCtrl -> Course : bindRule(ruleId)
+EnrollCtrl --> RuleForm : 设置生效提示
+@enduml

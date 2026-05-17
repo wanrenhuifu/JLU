@@ -1,0 +1,16 @@
+@startuml UC11_Sequence
+title UC11: 成绩统计分析 - 顺序图
+
+actor "教师" as Teacher
+boundary "教师成绩分析页面" as StatsPage
+control "成绩控制类" as GradeCtrl
+entity "Grade" as Grade
+
+Teacher -> StatsPage : 选择课程查看统计
+StatsPage -> GradeCtrl : getGradeStats(courseId)
+GradeCtrl -> Grade : findByCourse(courseId)
+Grade --> GradeCtrl : gradeList
+GradeCtrl -> GradeCtrl : generateReport(gradeList)
+GradeCtrl --> StatsPage : 返回分布及格率等图表数据
+StatsPage -> Teacher : 展示分析图表
+@enduml

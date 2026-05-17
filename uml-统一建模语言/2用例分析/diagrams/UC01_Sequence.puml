@@ -1,0 +1,23 @@
+@startuml UC01_Sequence
+title UC01: 用户登录 - 顺序图
+
+actor "用户" as UserActor
+boundary "登录界面" as LoginForm
+control "登录控制器" as LoginController
+entity "用户" as UserEntity
+
+UserActor -> LoginForm : 输入账号密码
+LoginForm -> LoginController : 提交登录请求(username, password)
+LoginController -> UserEntity : findUser(username)
+UserEntity --> LoginController : userObj
+LoginController -> UserEntity : validatePassword(password)
+UserEntity --> LoginController : boolean
+
+alt 验证通过
+    LoginController --> LoginForm : 登录成功
+    LoginForm -> UserActor : 进入主页
+else 验证失败
+    LoginController --> LoginForm : 提示错误信息
+    LoginForm -> UserActor : 允许重试
+end
+@enduml

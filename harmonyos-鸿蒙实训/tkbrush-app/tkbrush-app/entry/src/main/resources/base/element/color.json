@@ -1,0 +1,137 @@
+{
+  "color": [
+    {
+      "name": "start_window_background",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "primary",
+      "value": "#FF0000"
+    },
+    {
+      "name": "text_blue",
+      "value": "#0070FF"
+    },
+    {
+      "name": "blue_back",
+      "value": "#e7f0fd"
+    },
+    {
+      "name": "avtar_back",
+      "value": "#FFF5F5"
+    },
+    {
+      "name": "text_primary",
+      "value": "#33384B"
+    },
+    {
+      "name": "text_second",
+      "value": "#8D919E"
+    },
+    {
+      "name": "text_third",
+      "value": "#CBCED9"
+    },
+    {
+      "name": "back_color",
+      "value": "#F7F9FC"
+    },
+    {
+      "name": "second_back_color",
+      "value": "#f6f6f6"
+    },
+    {
+      "name": "border_color",
+      "value": "#f4f5f6"
+    },
+    {
+      "name": "danger",
+      "value": "#e75f58"
+    },
+    {
+      "name": "white",
+      "value": "#ffffff"
+    },
+    {
+      "name": "bottom_color",
+      "value": "#a4a4a4"
+    },
+    {
+      "name": "bottom_voice_color",
+      "value": "#515151"
+    },
+    {
+      "name": "voice_back_color",
+      "value": "#CC3E3E3E"
+    },
+    {
+      "name": "voice_round_color",
+      "value": "#323232"
+    },
+    {
+      "name": "voice_round_font_color",
+      "value": "#919191"
+    },
+    {
+      "name": "chat_primary",
+      "value": "#8aec71"
+    },
+    {
+      "name": "animate_voice_color",
+      "value": "#4a8040"
+    },
+    {
+      "name": "black",
+      "value": "#000000"
+    },
+    {
+      "name": "popup_back",
+      "value": "#4d4d4d"
+    },
+    {
+      "name": "location_back",
+      "value": "#80767676"
+    },
+    {
+      "name": "search_back",
+      "value": "#F3F4F5"
+    },
+    {
+      "name": "pay_back",
+      "value": "#57ab70"
+    },
+    {
+      "name": "line_color",
+      "value": "#E7E9EA"
+    },
+    {
+      "name": "progress_backColor",
+      "value": "#EAE7E7"
+    },
+    {
+      "name": "option_selectColor",
+      "value": "#0070FF"
+    },
+    {
+      "name": "option_normalColor",
+      "value": "#ECEFF4"
+    },
+    {
+      "name": "resultOption_selectColor",
+      "value": "#18D789"
+    },
+    {
+      "name": "resultOption_errorColor",
+      "value": "#FF5A5A"
+    },
+    {
+      "name": "resultBottom_backColor",
+      "value": "#FFE1E1"
+    },
+    {
+      "name": "textInput_shadow",
+      "value": "#FFE3E3"
+    }
+
+  ]
+}

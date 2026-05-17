@@ -1,0 +1,17 @@
+@startuml UC07_Sequence
+title UC07: 查看成绩 - 顺序图
+
+actor "学生" as Student
+boundary "成绩查询页面" as GradePage
+control "成绩控制类" as GradeCtrl
+entity "Grade" as Grade
+
+Student -> GradePage : 进入页面
+GradePage -> GradeCtrl : getGrades(studentId)
+GradeCtrl -> Grade : findByStudent(studentId)
+Grade --> GradeCtrl : gradeDataList
+
+GradeCtrl -> GradeCtrl : calculateStatistics(gradeDataList)
+GradeCtrl --> GradePage : 返回成绩列表及统计分析图表
+GradePage -> Student : 展示详情
+@enduml
