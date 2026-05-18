@@ -20,7 +20,6 @@
 
 ```text
 .
-├── data-viz-数据可视化/          # 数据可视化期末大作业
 ├── jilinuniversity-homework/    # 吉林大学作业项目 - ArkUI 组件学习演示
 ├── tkbrush-app/                 # TKBrush 刷题应用 - 完整功能应用
 └── 课程文档/                     # 课程相关文档（实训总结模板等）
