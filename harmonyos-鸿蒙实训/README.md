@@ -126,4 +126,4 @@ enterprise-training/
 
 ## 许可证
 
-[MIT](./LICENSE)
+[MIT](../LICENSE)

@@ -98,4 +98,4 @@ java -jar plantuml.jar 4部署建模/diagrams/*.puml
 
 ## 许可证
 
-[MIT](./LICENSE)
+[MIT](../LICENSE)
