@@ -35,23 +35,24 @@
 ## 项目结构
 
 ```text
-src/
-  components/     # 通用可复用组件
-    ui/           # shadcn/ui 基础组件
-  pages/          # 页面级组件
-  sections/       # 首页/Landing 区块
-  modules/        # 业务功能模块
-    books/        # 图书管理
-    borrows/      # 借阅管理
-    users/        # 用户管理
-  contexts/       # React Context（审计日志等）
-  data/           # 初始数据与 localStorage 工具
-  hooks/          # 自定义 Hooks
-  lib/            # 工具函数
-  types/          # TypeScript 类型定义
-
-public/
-  images/         # 静态图片资源
+.
+├── src/                 # 源代码目录
+│   components/          # 通用可复用组件
+│     ui/                # shadcn/ui 基础组件
+│   pages/               # 页面级组件
+│   sections/            # 首页/Landing 区块
+│   modules/             # 业务功能模块
+│     books/             # 图书管理
+│     borrows/           # 借阅管理
+│     users/             # 用户管理
+│   contexts/            # React Context（审计日志等）
+│   data/                # 初始数据与 localStorage 工具
+│   hooks/               # 自定义 Hooks
+│   lib/                 # 工具函数
+│   types/               # TypeScript 类型定义
+├── public/              # 静态资源目录
+│   images/              # 静态图片资源
+└── 课程文档/             # 课程相关文档（项目说明书模板等）
 ```
 
 ## 功能特性
