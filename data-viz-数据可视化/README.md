@@ -18,7 +18,6 @@
 ```text
 .
 ├── README.md               # 项目说明文档
-├── requirements.txt        # Python 依赖清单
 ├── run_all.py              # 一键运行全部任务的调度脚本
 ├── task1/                  # Task 1: 图像连通域分割与细胞计数
 │   ├── solution.py
@@ -49,7 +48,7 @@
 ### 安装依赖
 
 ```bash
-pip install -r requirements.txt
+pip install opencv-python numpy
 ```
 
 ### 一键运行（推荐）
