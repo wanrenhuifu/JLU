@@ -22,3 +22,7 @@ python EasyWord.py
 
 - Python 3.x
 - PyQt5
+
+## 许可证
+
+[MIT](../LICENSE)

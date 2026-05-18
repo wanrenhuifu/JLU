@@ -98,4 +98,4 @@ pip install -r ml2/Spam_Email_Classificaton-master/requirements.txt
 
    ## 许可证
 
-[MIT](./LICENSE)
+[MIT](../LICENSE)

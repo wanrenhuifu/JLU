@@ -65,4 +65,4 @@ python task1/solution.py --images task1/fig01.jpg --out-dir ./my_results
 
    ## 许可证
 
-[MIT](./LICENSE)
+[MIT](../LICENSE)
