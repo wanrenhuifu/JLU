@@ -1,0 +1,18 @@
+{
+  "name": "os-course-design",
+  "version": "1.0.0",
+  "description": "操作系统课程设计 - 十实验统一模拟程序",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["os", "simulation", "course-design"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "vite": "^6.0.0"
+  }
+}
