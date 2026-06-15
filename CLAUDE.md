@@ -16,7 +16,7 @@
 | `oop-面向对象程序设计` | 面向对象程序设计（C++） | C++, Winsock2 |
 | `os-操作系统课程设计` | 操作系统课程设计 | TypeScript, Vite, Canvas 2D |
 | `sqat-软件质量保证与测试` | 软件质量保证与测试 | Markdown, Mermaid |
-| `java-JAVA程序设计` | JAVA 程序设计 | Java (MUD 游戏开发) |
+| `java-JAVA程序设计` | JAVA 程序设计 | Java, Socket (MUD 多人文字游戏) |
 
 ## 常用命令
 
@@ -53,6 +53,20 @@ g++ -o ChatSystem main.cpp ConsoleUIZhs.cpp FileManagerZhs.cpp FriendInfoZhs.cpp
     GroupBaseZhs.cpp MicroServiceBaseZhs.cpp PlatformManagerZhs.cpp QQGroupZhs.cpp \
     QQUserZhs.cpp TcpChatZhs.cpp UserBaseZhs.cpp WeChatGroupZhs.cpp WeChatUserZhs.cpp \
     WeiboUserZhs.cpp WeiXUserZhs.cpp -lws2_32
+```
+
+### Java 项目
+
+```bash
+# 编译
+cd java-JAVA程序设计
+javac -encoding UTF-8 -d out src/mudgame/model/*.java src/mudgame/util/*.java src/mudgame/server/*.java src/mudgame/client/*.java
+
+# 启动服务器
+java -Dfile.encoding=UTF-8 -cp out mudgame.server.MudServer
+
+# 启动客户端（新终端）
+java -Dfile.encoding=UTF-8 -cp out mudgame.client.MudClient
 ```
 
 ### UML 图表生成
@@ -119,6 +133,5 @@ java -jar plantuml.jar <puml文件路径>
 
 ### 代码项目 vs 文档项目
 
-- **代码项目**（uml, harmonyos, data-viz, ml, qt, oracle, oop, os）：使用 `## 运行说明`，给出具体命令
+- **代码项目**（uml, harmonyos, data-viz, ml, qt, oracle, oop, os, java）：使用 `## 运行说明`，给出具体命令
 - **文档项目**（sa, sqat）：使用 `## 使用说明`，给出推荐阅读方式
-- **占位项目**（java）：保持标准结构，标注"待补充"
