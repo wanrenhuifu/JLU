@@ -16,7 +16,6 @@
 | `oop-面向对象程序设计` | 面向对象程序设计（C++） | C++, Winsock2 |
 | `os-操作系统课程设计` | 操作系统课程设计 | TypeScript, Vite, Canvas 2D |
 | `sqat-软件质量保证与测试` | 软件质量保证与测试 | Markdown, Mermaid |
-| `pr-模式识别` | 模式识别 | 待补充 |
 | `java-JAVA程序设计` | JAVA 程序设计 | Java (MUD 游戏开发) |
 
 ## 常用命令
@@ -122,4 +121,4 @@ java -jar plantuml.jar <puml文件路径>
 
 - **代码项目**（uml, harmonyos, data-viz, ml, qt, oracle, oop, os）：使用 `## 运行说明`，给出具体命令
 - **文档项目**（sa, sqat）：使用 `## 使用说明`，给出推荐阅读方式
-- **占位项目**（pr, java）：保持标准结构，标注"待补充"
+- **占位项目**（java）：保持标准结构，标注"待补充"
