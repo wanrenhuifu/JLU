@@ -37,6 +37,11 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Java
+out/
+*.class
+*.jar
+
 # Cache
 *.tsbuildinfo
 .eslintcache
